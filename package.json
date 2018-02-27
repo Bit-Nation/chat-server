@@ -4,7 +4,8 @@
   "description": "Temporary backend solution for bitnation",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:watch": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,8 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.15.1"
   }
 }
