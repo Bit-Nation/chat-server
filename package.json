@@ -1,0 +1,19 @@
+{
+  "name": "chat-server",
+  "version": "1.0.0",
+  "description": "Temporary backend solution for bitnation",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bit-Nation/chat-server.git"
+  },
+  "author": "Florian Lenz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bit-Nation/chat-server/issues"
+  },
+  "homepage": "https://github.com/Bit-Nation/chat-server#readme"
+}
