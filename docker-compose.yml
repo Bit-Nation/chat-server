@@ -9,14 +9,16 @@ services:
     volumes:
       - ./:/app
     working_dir: /app
+    tty: true
   mongo:
     image: aashreys/mongo-auth:latest
     environment:
       - AUTH=yes
       - MONGODB_ADMIN_USER=admin
       - MONGODB_ADMIN_PASS=adminpassword
-      - MONGODB_APPLICATION_DATABASE=eth_lend_bot
+      - MONGODB_APPLICATION_DATABASE=chat
       - MONGODB_APPLICATION_USER=username
       - MONGODB_APPLICATION_PASS=password
     ports:
       - "27017:27017"
+    tty: true

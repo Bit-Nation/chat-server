@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Bit-Nation/chat-server/issues"
   },
-  "homepage": "https://github.com/Bit-Nation/chat-server#readme"
+  "homepage": "https://github.com/Bit-Nation/chat-server#readme",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
 }
