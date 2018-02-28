@@ -9,7 +9,7 @@ process.on('uncaughtException', console.error);
 process.on('unhandledRejection', (e) => { throw e });
 
 app.use((err, req, res, next) => {
-    console.error(err);
+    logger.error(err);
     res.status(500).send('Internal error. Sorry');
 });
 
@@ -17,6 +17,16 @@ io.set('transports', ['websocket']);
 
 //Configure socket.io
 io
+    .use(function(socket, next){
+        if (socket.handshake.query && socket.handshake.query.token){
+            //@todo this is not sooo good practice but it's ok for now.
+            if(socket.handshake.query.token !== process.env.SOCKET_AUTH_TOKEN){
+                return next(new Error(`Wrong auth token`));
+            }
+            return next();
+        }
+        next(new Error('Missing auth token'));
+    })
     .on('connection', function(socket){
 
         const nationRoom = (nationId) => `nation_${nationId}`;
