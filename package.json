@@ -23,6 +23,7 @@
     "express": "^4.16.2",
     "mongoose": "^5.0.7",
     "socket.io": "^2.0.4",
+    "winston": "^2.4.0",
     "winston-papertrail": "^1.0.5"
   },
   "devDependencies": {
