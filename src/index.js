@@ -21,10 +21,12 @@ io
         if (socket.handshake.query && socket.handshake.query.token){
             //@todo this is not sooo good practice but it's ok for now.
             if(socket.handshake.query.token !== process.env.SOCKET_AUTH_TOKEN){
+                logger.warn(`Wrong auth token`);
                 return next(new Error(`Wrong auth token`));
             }
             return next();
         }
+        logger.warn(`Wrong auth token`);
         next(new Error('Missing auth token'));
     })
     .on('connection', function(socket){
@@ -69,7 +71,8 @@ io
             })
         })
 
-    });
+    })
+    .on('error', logger.error);
 
 http.listen(3000, function(){
     console.log('listening on *:3000');
