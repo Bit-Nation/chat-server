@@ -20,6 +20,4 @@ services:
       - MONGODB_APPLICATION_DATABASE=chat
       - MONGODB_APPLICATION_USER=username
       - MONGODB_APPLICATION_PASS=password
-    ports:
-      - "27034:27017"
     tty: true
