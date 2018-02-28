@@ -1,4 +1,5 @@
 const winston = require('winston');
+require('winston-papertrail').Papertrail;
 
 const winstonPapertrail = new winston.transports.Papertrail({
     host: process.env.PAPERTRAIL_HOST,
