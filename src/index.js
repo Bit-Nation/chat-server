@@ -1,6 +1,7 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const logger = require('./logger');
 const { Message } = require('./mongoose');
 
 //Error handling
