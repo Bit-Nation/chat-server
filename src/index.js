@@ -15,6 +15,31 @@ app.use((err, req, res, next) => {
 
 io.set('transports', ['websocket']);
 
+const nationRoom = (nationId) => `nation_${nationId}`;
+
+/**
+ * @desc Fetches messages of nation
+ * @param {number} the id of the nation from smart contract
+ */
+app.get('/messages/:nation_id', (req, res) => {
+
+    if(req.query.auth_token !== process.env.SOCKET_AUTH_TOKEN){
+        return res
+            .status(401)
+            .send();
+    }
+
+    Message
+        .find({room: nationRoom(req.params.nation_id)})
+        .limit(100)
+        .then(messages => {
+            res.send(messages);
+        })
+        .catch(e => {
+            throw e;
+        });
+});
+
 //Configure socket.io
 io
     .use(function(socket, next){
@@ -30,8 +55,6 @@ io
         next(new Error('Missing auth token'));
     })
     .on('connection', function(socket){
-
-        const nationRoom = (nationId) => `nation_${nationId}`;
 
         /**
          * @desc join room. Will inform the client when joined.
