@@ -21,6 +21,10 @@ module.exports = {
         createdAt: {
             type: Date,
             required: true
+        },
+        userId: {
+            type: String,
+            required: true
         }
     }))
 };

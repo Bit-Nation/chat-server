@@ -77,6 +77,7 @@ io
             m.msg= data.msg;
             m.from = data.from;
             m.createdAt = new Date();
+            m.userId = data.userId;
             m
                 .save()
                 //Emit message in room
