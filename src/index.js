@@ -96,7 +96,9 @@ io
         })
 
     })
-    .on('error', logger.error);
+    .on('error', e => {
+        throw e;
+    });
 
 http.listen(process.env.PORT || 3000, function(){
     console.log('listening on *:3000');
