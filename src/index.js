@@ -4,13 +4,15 @@ const io = require('socket.io')(http);
 const logger = require('./logger');
 const { Message } = require('./mongoose');
 
-//Error handling
-process.on('uncaughtException', console.error);
-process.on('unhandledRejection', (e) => { throw e });
-
 app.use((err, req, res, next) => {
-    logger.error(err);
+    if(process.env.PRODUCTION === true){
+        logger.error(err);
+    }else{
+        console.log(err);
+    }
+
     res.status(500).send('Internal error. Sorry');
+    next(err);
 });
 
 io.set('transports', ['websocket']);
@@ -100,6 +102,4 @@ io
         throw e;
     });
 
-http.listen(process.env.PORT || 3000, function(){
-    console.log('listening on *:3000');
-});
+http.listen(process.env.PORT || 3000);
