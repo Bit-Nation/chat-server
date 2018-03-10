@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const Schema = require('mongoose').Schema;
 const logger = require('./logger');
 
-mongoose.connect(process.env.MONGO_URL, logger.error);
+mongoose.connect(process.env.MONGO_URL, {
+    useMongoClient: true
+}, logger.error);
 
 module.exports = {
     Message: mongoose.model('Message', new Schema({
